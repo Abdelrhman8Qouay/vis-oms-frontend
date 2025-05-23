@@ -9,10 +9,10 @@
             </h1>
             <div class="flex items-center gap-2">
                 <input v-model="orderIdInput" type="text" placeholder="Enter Order ID"
-                    class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
                     @keyup.enter="fetchOrder" />
                 <button @click="fetchOrder"
-                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+                    class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors flex items-center gap-2">
                     <Icon name="mdi:magnify" class="w-4 h-4" />
                     <span>Search</span>
                 </button>
@@ -135,7 +135,7 @@
 
                     <div class="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
                         <div class="flex flex-wrap gap-3 justify-between">
-                            <button @click.prevent="isModalOpen = true" class="px-2 py-1 bg-red-600 rounded"
+                            <button @click.prevent="isModalOpen = true" class="px-2 py-1 bg-red-600 text-white rounded"
                                 title="enable to delete pending order">
                                 Cancel
                             </button>
@@ -158,7 +158,7 @@
                     </div>
                     <div class="flex items-end">
                         <button @click="applyFilters"
-                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                            class="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700">
                             Apply
                         </button>
                     </div>
@@ -298,7 +298,7 @@
 </template>
 
 <script setup lang="ts">
-import { OrderStatus, OrderTypes, /* PaymentStatus */ } from '~/utils/types/order.type'
+import { OrderStatus } from '~/utils/types/order.type'
 import { ENDPOINTS } from '~/utils/constants/apiEndpoints'
 import { fixedFraction, formatDate, formatDateTime, formatReadableText, orderIdFormat, timeSince } from '~/utils/functions/format'
 import type { OrderObject } from '~/utils/types/order.type'
@@ -338,7 +338,7 @@ const ordersError = ref<any>(null)
 const notificationSound = ref<HTMLAudioElement | null>(null)
 
 // Socket.IO
-const { isConnected, connectSocket, joinOrderRoom, listenToEvent, leaveRoom } = useSocketIo()
+const { connectSocket, joinOrderRoom, listenToEvent, leaveRoom } = useSocketIo()
 
 // Computed timeline based on order status
 const orderTimeline = computed(() => {

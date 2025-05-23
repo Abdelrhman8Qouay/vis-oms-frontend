@@ -13,7 +13,7 @@ export const ENDPOINTS = {
         CREATE_ORDER: '/cashier/orders/new',
         GET_ORDERS: '/cashier/orders',
         CANCEL_ORDER: (orderId: string) => `/cashier/orders/${orderId}/cancel`,
-        CURRENT_CASHIER_MENU: (menuId: string) => `/cashier/menu/current/${menuId}`,
+        CURRENT_CASHIER_MENU: `/cashier/menu/current`,
         GET_ORDER_DETAILS: (orderId: string) => `/cashier/orders/${orderId}`,
         GET_MENU: (menuId: string) => `/cashier/menu/${menuId}`,
     },

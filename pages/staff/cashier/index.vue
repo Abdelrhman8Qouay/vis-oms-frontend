@@ -165,7 +165,6 @@ definePageMeta({
 // State
 const currentMenu = ref<MenuObject>({});
 const currentCategory = ref<MenuCategory>({});
-const currentMenuId = ref<string>('')
 const selectedItems = ref<SelectedItem[]>([]);
 const customerDetails = ref<CustomerDetails>({
     name: '',
@@ -190,7 +189,7 @@ const canSubmitOrder = computed(() => {
 });
 
 // Actions
-const { isLoading: isMenuLoading, execute: executeCurrentMenu } = useAxios(ENDPOINTS.CASHIER.CURRENT_CASHIER_MENU(currentMenuId.value), { method: 'GET' }, $api, {
+const { isLoading: isMenuLoading, execute: executeCurrentMenu } = useAxios(ENDPOINTS.CASHIER.CURRENT_CASHIER_MENU, { method: 'GET' }, $api, {
     initialData: {}, immediate: false,
     onError(err) {
         console.error('Failed to fetch current menu:', err);
@@ -213,7 +212,7 @@ const { isLoading: isMenuLoading, execute: executeCurrentMenu } = useAxios(ENDPO
 })
 
 async function fetchCurrentMenu() {
-    await executeCurrentMenu(ENDPOINTS.CASHIER.CURRENT_CASHIER_MENU(currentMenuId.value))
+    await executeCurrentMenu(ENDPOINTS.CASHIER.CURRENT_CASHIER_MENU)
 }
 
 function addItem(item: MenuItem) {
